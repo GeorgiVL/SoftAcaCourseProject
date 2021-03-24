@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Test Demo Suite" parallel="classes" thread-count="2">
+    <test name="Selenium Course Suite tests">
+        <classes>
+            <class name="com.seleniumCases.tests.YahooSignUpTest"></class>
+            <class name="com.seleniumCases.tests.CheckStatisticsForCompanyStocks"></class>
+        </classes>
+    </test>
+</suite>
+
