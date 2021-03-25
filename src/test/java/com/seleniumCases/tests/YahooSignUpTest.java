@@ -25,7 +25,6 @@ public class YahooSignUpTest extends TestUtils {
         return CsvReader.readCsvFile("src/test/resources/signUp-data.csv");
     }
 
-
     @Test(dataProvider = "signUp-data-file")
     public void NegativeRegistration(String fName, String lName, String emailAddr, String pass, String phoneN, String d, String y) throws InterruptedException {
 
@@ -48,7 +47,7 @@ public class YahooSignUpTest extends TestUtils {
         list.selectByVisibleText("March");
 
         sp.day().sendKeys(d);
-        sp.year().sendKeys(y);
+        sp.year().sendKeys( y);
         sp.signUpButton().click();
 
         String emailErrorMess = driver.findElement(By.cssSelector("#reg-error-yid")).getText();

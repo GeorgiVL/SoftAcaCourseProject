@@ -39,7 +39,7 @@ public class CheckStatisticsForCompanyStocks extends TestUtils {
         YahooHomePage yahoo = new YahooHomePage(driver);
         AmazonStockPage amazon = new AmazonStockPage(driver);
         AppleStockPage apple = new AppleStockPage(driver);
-        WebDriverWait wait = new WebDriverWait(driver, 5);
+        WebDriverWait wait = new WebDriverWait(driver, 10);
 
 
         yahoo.acceptCookie().click();
@@ -52,6 +52,7 @@ public class CheckStatisticsForCompanyStocks extends TestUtils {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[@data-test='DIVIDEND_AND_YIELD-value']")));
         String amazonDev = amazon.amazonDev().getText();
         amazon.statisticPageAmazon().click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='Price/Book']/../following-sibling::td")));
         String mrqAmazon = amazon.priceBookAmazon().getText();
 
 
@@ -59,7 +60,7 @@ public class CheckStatisticsForCompanyStocks extends TestUtils {
         yahoo.searchButton().click();
 
 
-        wait.until(ExpectedConditions.visibilityOf(apple.appleDev()));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='Forward Dividend & Yield']/../following-sibling::td")));
         String appleDev = apple.appleDev().getText();
         apple.statisticApplePage().click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='Price/Book']/../following-sibling::td")));
