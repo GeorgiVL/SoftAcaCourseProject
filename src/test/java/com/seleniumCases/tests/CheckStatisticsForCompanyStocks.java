@@ -9,10 +9,12 @@ import com.seleniumCases.utils.Base;
 import com.seleniumCases.utils.CsvReader;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.experimental.theories.Theories;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -37,18 +39,19 @@ public class CheckStatisticsForCompanyStocks extends TestUtils {
         YahooHomePage yahoo = new YahooHomePage(driver);
         AmazonStockPage amazon = new AmazonStockPage(driver);
         AppleStockPage apple = new AppleStockPage(driver);
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, 5);
 
 
         yahoo.acceptCookie().click();
         yahoo.searchField().sendKeys("Amazon");
         yahoo.searchButton().click();
 
-        driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
-        wait.until(ExpectedConditions.visibilityOf(amazon.amazonDev()));
+
+        driver.manage().timeouts().implicitlyWait(0,TimeUnit.SECONDS);
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[@data-test='DIVIDEND_AND_YIELD-value']")));
         String amazonDev = amazon.amazonDev().getText();
         amazon.statisticPageAmazon().click();
-        wait.until(ExpectedConditions.visibilityOf(amazon.priceBookAmazon()));
         String mrqAmazon = amazon.priceBookAmazon().getText();
 
 
@@ -59,7 +62,7 @@ public class CheckStatisticsForCompanyStocks extends TestUtils {
         wait.until(ExpectedConditions.visibilityOf(apple.appleDev()));
         String appleDev = apple.appleDev().getText();
         apple.statisticApplePage().click();
-        wait.until(ExpectedConditions.visibilityOf(apple.priceBookApple()));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='Price/Book']/../following-sibling::td")));
         String mrqApple = apple.priceBookApple().getText();
 
 
