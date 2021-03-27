@@ -17,7 +17,7 @@ import org.testng.asserts.SoftAssert;
 
 import java.io.IOException;
 
-
+@Slf4j
 public class YahooSignUpTest extends TestUtils {
 
     @DataProvider(name="signUp-data-file")
@@ -44,7 +44,6 @@ public class YahooSignUpTest extends TestUtils {
 
         Select list = new Select(sp.dropDownElements());
         list.selectByValue("3");
-        list.selectByVisibleText("March");
 
         sp.day().sendKeys(d);
         sp.year().sendKeys( y);

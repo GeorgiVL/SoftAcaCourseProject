@@ -25,16 +25,16 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class CheckStatisticsForCompanyStocks extends TestUtils {
 
-/*
-    @DataProvider(name = "stocks-data-file")
+
+    @DataProvider(name = "stocks-data")
     public static Object[] dataProvidedFromTheCsvFile() throws IOException, CsvException {
         return CsvReader.readCsvFile("src/test/resources/stocks-data.csv");
     }
 
-*/
 
-    @Test
-    public void checkStatsForCompanyStocks() throws InterruptedException {
+
+    @Test(dataProvider = "stocks-data")
+    public void checkStatsForCompanyStocks(String compAmazon,String devAma, String compApple, String devApp, String mrqAma, String mrqApp) {
 
         YahooHomePage yahoo = new YahooHomePage(driver);
         AmazonStockPage amazon = new AmazonStockPage(driver);
@@ -43,7 +43,7 @@ public class CheckStatisticsForCompanyStocks extends TestUtils {
 
 
         yahoo.acceptCookie().click();
-        yahoo.searchField().sendKeys("Amazon");
+        yahoo.searchField().sendKeys(compAmazon);
         yahoo.searchButton().click();
 
 
@@ -56,7 +56,7 @@ public class CheckStatisticsForCompanyStocks extends TestUtils {
         String mrqAmazon = amazon.priceBookAmazon().getText();
 
 
-        yahoo.searchField().sendKeys("Apple");
+        yahoo.searchField().sendKeys(compApple);
         yahoo.searchButton().click();
 
 
@@ -68,10 +68,10 @@ public class CheckStatisticsForCompanyStocks extends TestUtils {
 
 
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(amazonDev, "N/A (N/A)");
-        softAssert.assertEquals(mrqAmazon, "16.79");
-        softAssert.assertEquals(appleDev, "0.82 (0.67%)");
-        softAssert.assertEquals(mrqApple, "30.79");
+        softAssert.assertEquals(amazonDev, devAma);
+        softAssert.assertEquals(mrqAmazon, mrqAma);
+        softAssert.assertEquals(appleDev, devApp);
+        softAssert.assertEquals(mrqApple, mrqApp);
 
         //softAssert.assertAll();
 
