@@ -1,11 +1,11 @@
 package com.seleniumCases.signUpYahooPageObjects;
 
-import com.seleniumCases.utils.Base;
+import com.seleniumCases.utils.BaseDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class YahooSignUpPage extends Base {
+public class YahooSignUpPage extends BaseDriver {
 
 
     public YahooSignUpPage(WebDriver driver) {

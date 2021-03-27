@@ -1,27 +1,24 @@
 package com.seleniumCases.tests;
 
 import com.seleniumCases.base.TestUtils;
-import com.opencsv.exceptions.CsvException;
 import com.seleniumCases.signUpYahooPageObjects.YahooHomePage;
 import com.seleniumCases.signUpYahooPageObjects.YahooLoginPage;
 import com.seleniumCases.signUpYahooPageObjects.YahooSignUpPage;
 import com.seleniumCases.utils.CsvReader;
-import lombok.extern.slf4j.Slf4j;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-
-
 import java.io.IOException;
 
-@Slf4j
+
+
 public class YahooSignUpTest extends TestUtils {
 
     @DataProvider(name="signUp-data-file")
-    public static Object[][] dataProviderFromCsvFile() throws IOException, CsvException {
+    public static Object[][] dataProviderFromCsvFile() throws IOException {
         return CsvReader.readCsvFile("src/test/resources/signUp-data.csv");
     }
 
@@ -64,6 +61,8 @@ public class YahooSignUpTest extends TestUtils {
         softAssert.assertEquals(phoneNumErrorMess,"That doesn’t look right, please re-enter your phone number.");
         softAssert.assertEquals(birthDayErrorMess, "That doesn’t look right, please re-enter your birthday.");
 
+        System.out.println("Executing the test!");
         softAssert.assertAll();
+
     }
 }

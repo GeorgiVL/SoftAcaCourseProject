@@ -1,11 +1,11 @@
 package com.seleniumCases.comparingStatisticsPageObjects;
 
-import com.seleniumCases.utils.Base;
+import com.seleniumCases.utils.BaseDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class AmazonStockPage extends Base {
+public class AmazonStockPage extends BaseDriver {
 
     public AmazonStockPage(WebDriver driver) {
         super(driver);
