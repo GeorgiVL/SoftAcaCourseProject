@@ -19,8 +19,8 @@ public class CheckStatisticsForCompanyStocks extends TestUtils {
 
 
     @DataProvider(name = "stocks-data")
-    public static Object[][] dataProvidedFromTheCsvFile() throws IOException {
-        return CsvReader.readCsvFile("src/test/resources/stocks-data.csv");
+    public static Object[] dataProvidedFromTheCsvFileSecondTest() throws IOException {
+        return CsvReader.readCsvFile("D://SoftAcaCourseProject//src//test//resources//stocksCompany-data.csv");
     }
 
 

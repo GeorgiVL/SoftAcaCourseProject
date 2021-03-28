@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Test Suite" parallel="tests" thread-count="2">
+<suite name="Test Suite" parallel="classes" thread-count="2">
     <test name="Selenium Tests">
         <packages>
             <package name="com.seleniumCases.tests.*"/>

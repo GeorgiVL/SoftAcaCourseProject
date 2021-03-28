@@ -2,9 +2,8 @@ package com.seleniumCases.base;
 
 import com.seleniumCases.driver.DriverFactory;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.*;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -16,7 +15,7 @@ public class TestUtils {
     private int impWait;
     private String browser;
 
-
+/*
     @BeforeSuite
     public void readConfigProperties() throws IOException {
 
@@ -32,8 +31,8 @@ public class TestUtils {
             e.printStackTrace();
         }
     }
-
-    @BeforeTest
+*/
+    @BeforeMethod
     public void setUp() throws InterruptedException {
         setUpBrowserDriver();
         loadUrl();
@@ -45,6 +44,17 @@ public class TestUtils {
     }
 
     private void setUpBrowserDriver() throws InterruptedException {
+        try {
+            FileInputStream configFile = new FileInputStream("src/test/resources/config.properties");
+            Properties config = new Properties();
+            config.load(configFile);
+            url = config.getProperty("url");
+            impWait = Integer.parseInt(config.getProperty("implicitlyWait"));
+            browser = config.getProperty("browser");
+            System.out.println("Loading the properties");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         switch (browser) {
             case "chrome":
                 driver = DriverFactory.getChromeDriver(impWait);
@@ -58,7 +68,7 @@ public class TestUtils {
         }
     }
 
-    @AfterTest
+    @AfterMethod
     public void closeBrowser() {
         driver.close();
         System.out.println("Closing the browser!");

@@ -18,7 +18,7 @@ import java.io.IOException;
 public class YahooSignUpTest extends TestUtils {
 
     @DataProvider(name="signUp-data-file")
-    public static Object[][] dataProviderFromCsvFile() throws IOException {
+    public static Object[][] dataProviderFromCsvFileFirstTest() throws IOException {
         return CsvReader.readCsvFile("src/test/resources/signUp-data.csv");
     }
 
