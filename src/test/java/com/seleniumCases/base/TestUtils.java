@@ -15,23 +15,6 @@ public class TestUtils {
     private int impWait;
     private String browser;
 
-/*
-    @BeforeSuite
-    public void readConfigProperties() throws IOException {
-
-        try {
-            FileInputStream configFile = new FileInputStream("src/test/resources/config.properties");
-            Properties config = new Properties();
-            config.load(configFile);
-            url = config.getProperty("url");
-            impWait = Integer.parseInt(config.getProperty("implicitlyWait"));
-            browser = config.getProperty("browser");
-            System.out.println("Loading the properties");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-*/
     @BeforeMethod
     public void setUp() throws InterruptedException {
         setUpBrowserDriver();
