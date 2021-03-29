@@ -69,7 +69,7 @@ public class YahooSignUpTest extends TestUtils {
         softAssert.assertEquals(birthDayErrorMess, "That doesn’t look right, please re-enter your birthday.");
 
         System.out.println("Executing the test!");
-        softAssert.assertAll();
+        //softAssert.assertAll();
 
     }
 }
