@@ -1,4 +1,4 @@
-package com.seleniumCases.signUpYahooPageObjects;
+package com.seleniumCases.YahooPageObjects;
 
 import com.seleniumCases.utils.BaseDriver;
 import org.openqa.selenium.By;

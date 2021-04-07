@@ -1,9 +1,9 @@
 package com.seleniumCases.tests;
 
 import com.seleniumCases.base.TestUtils;
-import com.seleniumCases.signUpYahooPageObjects.YahooHomePage;
-import com.seleniumCases.signUpYahooPageObjects.YahooLoginPage;
-import com.seleniumCases.signUpYahooPageObjects.YahooSignUpPage;
+import com.seleniumCases.YahooPageObjects.YahooHomePage;
+import com.seleniumCases.YahooPageObjects.YahooLoginPage;
+import com.seleniumCases.YahooPageObjects.YahooSignUpPage;
 import com.seleniumCases.utils.CsvReader;
 
 import org.openqa.selenium.By;
