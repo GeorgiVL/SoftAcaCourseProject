@@ -47,7 +47,7 @@ public class YahooSignUpTest extends TestUtils {
         list.selectByValue("3");
 
         sp.day().sendKeys(d);
-        sp.year().sendKeys( y);
+        sp.year().sendKeys(y);
         sp.signUpButton().click();
 
         // Getting the text from all the error messages
@@ -59,8 +59,7 @@ public class YahooSignUpTest extends TestUtils {
         /*
         Assert.assertEquals(emailErrorMess, "This email address is not available for sign up, try something else");
         */
-
-
+        
         // Verifying all errors messages for each field
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertEquals(emailErrorMess, "This email address is not available for sign up, try something else");
@@ -69,7 +68,7 @@ public class YahooSignUpTest extends TestUtils {
         softAssert.assertEquals(birthDayErrorMess, "That doesn’t look right, please re-enter your birthday.");
 
         System.out.println("Executing the test!");
-        //softAssert.assertAll();
+        softAssert.assertAll();
 
     }
 }
