@@ -12,6 +12,7 @@ public class YahooLoginPage extends BaseDriver {
     }
 
     By createAnAccount = By.id("createacc");
+
     public WebElement signUp() {
         return driver.findElement(createAnAccount);
     }

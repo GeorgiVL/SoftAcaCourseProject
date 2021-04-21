@@ -1,23 +1,22 @@
 package com.seleniumCases.tests;
 
-import com.seleniumCases.base.TestUtils;
 import com.seleniumCases.YahooPageObjects.YahooHomePage;
 import com.seleniumCases.YahooPageObjects.YahooLoginPage;
 import com.seleniumCases.YahooPageObjects.YahooSignUpPage;
+import com.seleniumCases.base.TestUtils;
 import com.seleniumCases.utils.CsvReader;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import java.io.IOException;
 
+import java.io.IOException;
 
 
 public class YahooSignUpTest extends TestUtils {
 
-    @DataProvider(name="signUp-data-file")
+    @DataProvider(name = "signUp-data-file")
     public static Object[][] dataProviderFromCsvFileFirstTest() throws IOException {
         return CsvReader.readCsvFile("src/test/resources/signUp-data.csv");
     }
@@ -46,6 +45,7 @@ public class YahooSignUpTest extends TestUtils {
         Select list = new Select(sp.dropDownElements());
         list.selectByValue("3");
 
+
         sp.day().sendKeys(d);
         sp.year().sendKeys(y);
         sp.signUpButton().click();
@@ -59,12 +59,12 @@ public class YahooSignUpTest extends TestUtils {
         /*
         Assert.assertEquals(emailErrorMess, "This email address is not available for sign up, try something else");
         */
-        
+
         // Verifying all errors messages for each field
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertEquals(emailErrorMess, "This email address is not available for sign up, try something else");
         softAssert.assertEquals(passwordErrorMess, "Your password isn’t strong enough, try making it longer.");
-        softAssert.assertEquals(phoneNumErrorMess,"That doesn’t look right, please re-enter your phone number.");
+        softAssert.assertEquals(phoneNumErrorMess, "That doesn’t look right, please re-enter your phone number.");
         softAssert.assertEquals(birthDayErrorMess, "That doesn’t look right, please re-enter your birthday.");
 
         System.out.println("Executing the test!");

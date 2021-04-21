@@ -1,7 +1,6 @@
 package com.seleniumCases.utils;
 
 import com.opencsv.CSVReader;
-import com.opencsv.exceptions.CsvException;
 
 import java.io.FileReader;
 import java.io.IOException;

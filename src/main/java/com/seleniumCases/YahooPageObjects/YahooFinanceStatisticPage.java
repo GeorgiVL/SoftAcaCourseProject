@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 
 public class YahooFinanceStatisticPage extends BaseDriver {
 
+
     public YahooFinanceStatisticPage(WebDriver driver) {
         super(driver);
     }
@@ -15,12 +16,15 @@ public class YahooFinanceStatisticPage extends BaseDriver {
     By statisticPage = By.xpath("//li[@data-test='STATISTICS']");
     By priceBook = By.xpath("//span[text()='Price/Book']/../following-sibling::td");
 
+
     public WebElement devidents() {
         return driver.findElement(forwardDevidentAndYield);
     }
+
     public WebElement statisticPage() {
         return driver.findElement(statisticPage);
     }
+
     public WebElement priceBook() {
         return driver.findElement(priceBook);
     }

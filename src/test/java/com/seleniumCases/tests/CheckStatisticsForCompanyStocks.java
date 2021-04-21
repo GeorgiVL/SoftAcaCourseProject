@@ -1,8 +1,8 @@
 package com.seleniumCases.tests;
 
-import com.seleniumCases.base.TestUtils;
 import com.seleniumCases.YahooPageObjects.YahooFinanceStatisticPage;
 import com.seleniumCases.YahooPageObjects.YahooHomePage;
+import com.seleniumCases.base.TestUtils;
 import com.seleniumCases.utils.CsvReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;

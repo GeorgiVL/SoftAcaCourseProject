@@ -2,7 +2,8 @@ package com.seleniumCases.base;
 
 import com.seleniumCases.driver.DriverFactory;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 
 import java.io.FileInputStream;
 import java.io.IOException;
