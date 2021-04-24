@@ -26,7 +26,7 @@ public class YahooSignUpTest extends TestUtils {
     }
 
     @Test(dataProvider = "signUp-data-file")
-    public void NegativeRegistration(String fName, String lName, String emailAddr, String pass, String phoneN, String d, String y) throws InterruptedException {
+    public void NegativeRegistration(String fName, String lName, String emailAddr, String pass, String phoneN, String d, String y,String gender) throws InterruptedException {
 
         // Creating objects from the pages where we have stored all the elements so we can do some actions with them once we call them.
         YahooHomePage hp = new YahooHomePage(driver);
@@ -48,10 +48,9 @@ public class YahooSignUpTest extends TestUtils {
         // From the drop down menu we choose "March"
         Select list = new Select(sp.dropDownElements());
         list.selectByValue("3");
-
         sp.day().sendKeys(d);
         sp.year().sendKeys(y);
-        sp.enterGender().sendKeys("asdasd");
+        sp.enterGender().sendKeys(gender);
 
         // Getting the text from all the error messages
         String emailErrorMess = driver.findElement(By.xpath("//div[@id='reg-error-yid']")).getText();
@@ -70,9 +69,7 @@ public class YahooSignUpTest extends TestUtils {
         softAssert.assertEquals(passwordErrorMess, "Your password isn’t strong enough, try making it longer.");
         softAssert.assertEquals(phoneNumErrorMess, "That doesn’t look right, please re-enter your phone number.");
         softAssert.assertEquals(birthDayErrorMess, "That doesn’t look right, please re-enter your birthday.");
-
         System.out.println("Executing the test!");
         softAssert.assertAll();
-
     }
 }
