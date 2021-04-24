@@ -1,5 +1,4 @@
 package com.seleniumCases.tests;
-
 import com.seleniumCases.YahooPageObjects.YahooFinanceStatisticPage;
 import com.seleniumCases.YahooPageObjects.YahooHomePage;
 import com.seleniumCases.base.TestUtils;

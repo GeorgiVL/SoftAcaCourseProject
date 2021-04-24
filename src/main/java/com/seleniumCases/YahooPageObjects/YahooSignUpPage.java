@@ -21,6 +21,7 @@ public class YahooSignUpPage extends BaseDriver {
     By inputDay = By.id("usernamereg-day");
     By inputYear = By.id("usernamereg-year");
     By singUpbutton = By.id("reg-submit-button");
+    By inputGender = By.cssSelector("input[id='usernamereg-freeformGender']");
 
 
     public WebElement firstName() {
@@ -58,4 +59,9 @@ public class YahooSignUpPage extends BaseDriver {
     public WebElement signUpButton() {
         return driver.findElement(singUpbutton);
     }
+
+    public WebElement enterGender() {
+        return driver.findElement(inputGender);
+    }
+
 }

@@ -6,12 +6,16 @@ import com.seleniumCases.YahooPageObjects.YahooSignUpPage;
 import com.seleniumCases.base.TestUtils;
 import com.seleniumCases.utils.CsvReader;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 
 public class YahooSignUpTest extends TestUtils {
@@ -45,24 +49,24 @@ public class YahooSignUpTest extends TestUtils {
         Select list = new Select(sp.dropDownElements());
         list.selectByValue("3");
 
-
         sp.day().sendKeys(d);
         sp.year().sendKeys(y);
-        sp.signUpButton().click();
+        sp.enterGender().sendKeys("asdasd");
 
         // Getting the text from all the error messages
-        String emailErrorMess = driver.findElement(By.cssSelector("#reg-error-yid")).getText();
+        String emailErrorMess = driver.findElement(By.xpath("//div[@id='reg-error-yid']")).getText();
         String passwordErrorMess = driver.findElement(By.cssSelector("#reg-error-password")).getText();
-        String phoneNumErrorMess = driver.findElement(By.xpath("//div[@data-error='messages.INVALID_PHONE_NUMBER']")).getText();
-        String birthDayErrorMess = driver.findElement(By.cssSelector("#reg-error-birthDate")).getText();
+        String phoneNumErrorMess = driver.findElement(By.id("reg-error-phone")).getText();
 
-        /*
-        Assert.assertEquals(emailErrorMess, "This email address is not available for sign up, try something else");
-        */
+        driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+        WebElement birthDayEr = driver.findElement(By.id("reg-error-birthDate"));
+        wait.until(ExpectedConditions.visibilityOf(birthDayEr));
+        String birthDayErrorMess = birthDayEr.getText();
 
         // Verifying all errors messages for each field
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(emailErrorMess, "This email address is not available for sign up, try something else");
+        softAssert.assertEquals(emailErrorMess, "A Yahoo account already exists with this email address. Sign in.");
         softAssert.assertEquals(passwordErrorMess, "Your password isn’t strong enough, try making it longer.");
         softAssert.assertEquals(phoneNumErrorMess, "That doesn’t look right, please re-enter your phone number.");
         softAssert.assertEquals(birthDayErrorMess, "That doesn’t look right, please re-enter your birthday.");
