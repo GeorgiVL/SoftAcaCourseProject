@@ -20,7 +20,6 @@ public class TestUtils {
     public void setUp() throws InterruptedException {
         setUpBrowserDriver();
         loadUrl();
-        System.out.println("Start the driver and loading the URL");
     }
 
     private void loadUrl() {
@@ -35,7 +34,6 @@ public class TestUtils {
             url = config.getProperty("url");
             impWait = Integer.parseInt(config.getProperty("implicitlyWait"));
             browser = config.getProperty("browser");
-            System.out.println("Loading the properties");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -55,6 +53,5 @@ public class TestUtils {
     @AfterMethod
     public void closeBrowser() {
         driver.close();
-        System.out.println("Closing the browser!");
     }
 }

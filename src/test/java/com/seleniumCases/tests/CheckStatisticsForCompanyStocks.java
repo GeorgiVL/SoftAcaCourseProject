@@ -47,7 +47,6 @@ public class CheckStatisticsForCompanyStocks extends TestUtils {
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertEquals(dev, devExp);
         softAssert.assertEquals(mrq, mrqExp);
-        System.out.println("Executing the test!");
         //softAssert.assertAll();
     }
 }

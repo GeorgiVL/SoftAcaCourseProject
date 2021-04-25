@@ -58,10 +58,10 @@ public class YahooSignUpTest extends TestUtils {
         String phoneNumErrorMess = driver.findElement(By.id("reg-error-phone")).getText();
 
         driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
-        WebDriverWait wait = new WebDriverWait(driver, 20);
-        WebElement birthDayEr = driver.findElement(By.id("reg-error-birthDate"));
-        wait.until(ExpectedConditions.visibilityOf(birthDayEr));
-        String birthDayErrorMess = birthDayEr.getText();
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebElement birthDayErr = driver.findElement(By.id("reg-error-birthDate"));
+        wait.until(ExpectedConditions.visibilityOf(birthDayErr));
+        String birthDayErrorMess = birthDayErr.getText();
 
         // Verifying all errors messages for each field
         SoftAssert softAssert = new SoftAssert();
@@ -69,7 +69,6 @@ public class YahooSignUpTest extends TestUtils {
         softAssert.assertEquals(passwordErrorMess, "Your password isn’t strong enough, try making it longer.");
         softAssert.assertEquals(phoneNumErrorMess, "That doesn’t look right, please re-enter your phone number.");
         softAssert.assertEquals(birthDayErrorMess, "That doesn’t look right, please re-enter your birthday.");
-        System.out.println("Executing the test!");
         softAssert.assertAll();
     }
 }
